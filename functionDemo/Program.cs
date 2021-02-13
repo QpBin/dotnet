@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace functionDemo
 {
@@ -6,43 +6,44 @@ namespace functionDemo
     {
         static void Main(string[] args)
         {
+            Student stu = null;
+            if (StudentFactory.Create("Qing Ping",24,out stu))
+            {
+                Console.WriteLine($"Student : {stu.Name},Age : {stu.Age}");
+            }
 
-			var outterStu = new Student(){Name="P"};
-			System.Console.WriteLine("调用前");
-			System.Console.WriteLine($"{outterStu.GetHashCode()} - {outterStu.Name}");
-			IwantEffect(ref outterStu);
-			System.Console.WriteLine("调用后");
-			System.Console.WriteLine($"{outterStu.GetHashCode()} - {outterStu.Name}");
-
-
-
-            // var stu =new Student(){Name="Ping"};
-            // SomeMethod(stu);
-            // System.Console.WriteLine(stu.Name);
-            // System.Console.WriteLine(stu.GetHashCode());
-
-            // int y = 1;
-            // IwantEffect(ref y);
-            // System.Console.WriteLine(y);   //101
+            int result = Clac(1, 2, 3, 4, 5);
+            Console.WriteLine(result);
         }
-        // static void SomeMethod(Student stu){
-        // 	stu = new Student();
-        // 	stu.Name = "Qing";
-        // 	System.Console.WriteLine(stu.GetHashCode());
-        // }
-        static void IwantEffect(ref Student stu)
+
+        static int Clac(params int[] intArray)
         {
-            stu = new Student() { Name = "Q" };
-            System.Console.WriteLine(stu.GetHashCode());
+            int sum = 0;
+            foreach (var item in intArray)
+            {
+                sum += item;
+            }
+            return sum;
         }
-
-        // static void IwantEffect(ref int x){
-        // 	 x += 100;
-        // }
-
     }
+
     class Student
     {
+        public int Age { get; set; }
         public string Name { get; set; }
+    }
+
+    class StudentFactory
+    {
+        public static bool Create(string stuName, int stuAge,out Student result)
+        {
+            result = null;
+            if (string.IsNullOrEmpty(stuName))
+                return false;
+            if (stuAge < 20 || stuAge > 80)
+                return false;
+            result = new Student() {Name = stuName, Age = stuAge};
+            return true;
+        }
     }
 }

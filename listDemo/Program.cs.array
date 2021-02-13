@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace listDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           string[] strArr = new string[2];
+           string[] strArr1 = new string[]{"a","b","c"};
+
+           string s1 = strArr1[0];   // "a"
+           //string s3 = strArr[4];    //IndexOutOfRangeException
+           Console.WriteLine(strArr.Length);
+        }
+    }
+}
