@@ -1,6 +1,13 @@
 # Prerequisites
 *.d
-
+bin
+obj
+*.csproj
+*.exe
+*.dll
+*.pbd
+/Debug
+*.vscode
 # Compiled Object files
 *.slo
 *.lo
