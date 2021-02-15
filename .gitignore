@@ -3,3 +3,6 @@ obj
 *.csproj
 *.idea
 *.vscode
+*.suo
+*.sln
+*.config
